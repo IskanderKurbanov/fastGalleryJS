@@ -6,7 +6,7 @@ simple test library for yourself
 
 
 Quickstart:
-
+```javascript
 <script type="text/javascript" src=".../fag.js"></script>
 
 <div id="fg"></div>
@@ -32,6 +32,6 @@ Quickstart:
 		path: "path where library is located",
 	})
 </script>
-
+```
 
 
