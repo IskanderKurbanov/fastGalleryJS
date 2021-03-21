@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>fag test</title>
+	<style type="text/css">
+		*{margin: 0px;padding:0px;}
+		body {background-color: ;}
+		.gallery {width: 80%;margin: 5px auto;}
+	</style>
+	<script type="text/javascript" src="../fag.js"></script>
+</head>
+<body>
+	<div class="">
+		<div id="fg"></div>
+	</div>
+
+	<script type="text/javascript">
+		data = [{
+			title: "Saturn's Spring",
+			text: "Spring doesn't just hapen on Earth. Spring also happens on some of our neighboring planets in the solar system.",
+			src: "https://www.nasa.gov/sites/default/files/images/554241main_pia11667_full.jpg",
+			link:"https://www.nasa.gov/sites/default/files/thumbnails/image/654242main_p1220b3k.jpg",
+			visible: true,
+		},
+		{
+			title: "Hubble Shows Us the Future",
+			text: "Sometime in the far distant future, about 4 billion years from now, our Milky Way galaxy will collide with the neighboring Andromeda galaxy, as illustrated in this artist's rendition.",
+			src: "https://www.nasa.gov/sites/default/files/thumbnails/image/654242main_p1220b3k.jpg",
+			link:"https://www.nasa.gov/sites/default/files/thumbnails/image/654242main_p1220b3k.jpg",
+			visible: true,
+		},{
+			title: "March 18, 1978: Space Shuttle Enterprise Arrives for Vibration Testing",
+			text: "On March 18, 1978, space shuttle Enterprise arrived at NASA’s Marshall Space Flight Center for mated vertical ground vibration testing, which marked the first time the entire shuttle compliment – orbiter, external tank, and solid rocket boosters – were mated vertically. Here, Enterprise is offloaded at Redstone Arsenal Airfield before being moved to Marshall’s Dynamic Test Stand. Today, Marshall is playing a vital role in the Artemis program by developing the Space Launch System, the backbone of NASA’s exploration plans and the only rocket capable of sending humans to the Moon and Mars. ",
+			src: "https://www.nasa.gov/sites/default/files/thumbnails/image/7887863_1041x833.jpg",
+			link:"https://www.nasa.gov/sites/default/files/thumbnails/image/654242main_p1220b3k.jpg",
+			visible: true,
+		},{
+			title: "NASA and the Merritt Island Wildlife Refuge",
+			text: "Did you know that NASA's Kennedy Space Center shares its home with the Merritt Island National Wildlife Refuge?",
+			src: "https://www.nasa.gov/sites/default/files/thumbnails/image/2014-2930_1.jpg",
+			link:"https://www.nasa.gov/sites/default/files/thumbnails/image/654242main_p1220b3k.jpg",
+			visible: true,
+		},{
+			title: "title",
+			text: "description",
+			src: "",
+			link:"",
+			visible: true,
+		},]
+
+		new Fag({
+			tag: "#fg",
+			data: data,
+			path: "../",
+		})
+	</script>
+</body>
+</html>
