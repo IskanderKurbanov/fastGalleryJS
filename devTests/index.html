@@ -1,0 +1,86 @@
+<div class="fg">
+  <div class="FAG_row">
+    <article class="FAG_item">
+      <a href="https://www.nasa.gov/sites/default/files/thumbnails/image/654242main_p1220b3k.jpg">
+        <aside style="background-image:url(https://www.nasa.gov/sites/default/files/images/554241main_pia11667_full.jpg)" class="FAG_aside"><p class="FAG_p">On March 18, 1978, space shuttle Enterprise arrived at NASA’s Marshall Space Flight Center for mated vertical ground vibration testing, which marked the first time the entire shuttle compliment – orbiter, external tank, and solid rocket boosters – were mated vertically. Here, Enterprise is offloaded at Redstone Arsenal Airfield before being moved to Marshall’s Dynamic Test Stand. Today, Marshall is playing a vital role in the Artemis program by developing the Space Launch System, the backbone of NASA’s exploration plans and the only rocket capable of sending humans to the Moon and Mars.</p></aside>
+      </a>
+    </article>
+    <article class="FAG_item">
+      <a href="https://www.nasa.gov/sites/default/files/thumbnails/image/654242main_p1220b3k.jpg">
+        <aside style="background-image:url(https://www.nasa.gov/sites/default/files/images/554241main_pia11667_full.jpg)" class="FAG_aside"><p class="FAG_p">bla</p></aside>
+      </a>
+    </article>
+    <article class="FAG_item_th">
+      <a href="https://www.nasa.gov/sites/default/files/thumbnails/image/654242main_p1220b3k.jpg">
+        <aside style="background-image:url(https://www.nasa.gov/sites/default/files/images/554241main_pia11667_full.jpg)" class="FAG_aside"><p class="FAG_p">bla</p></aside>
+      </a>
+    </article>
+  </div>
+</div>
+
+ 
+<style>
+.FAG_row {background-color: silver;}
+*{margin: 0px; padding: 0px;}
+
+.fg {
+  max-width: 1200px;
+  margin:30px auto;
+}
+
+.FAG_row {
+  width: 100%;
+  margin-bottom: 2%;
+  display: flex;
+}
+.FAG_row:after {
+  content: "";
+  padding-top: 32%;
+  display: block;
+}
+
+.FAG_item,
+.FAG_item_th {
+  min-height: 100%;
+  width: 32%;
+  vertical-align: top;
+}
+.FAG_item {
+  margin-right: 2%;
+}
+.FAG_item_th{
+  margin:0px;
+}
+.FAG_item:last-child,
+.FAG_item_th:last-child {
+  margin:0px;
+}
+.FAG_item:hover,
+.FAG_item_th:hover {
+  box-shadow: 0 0 15px var(--black);
+}
+
+.FAG_aside {
+  height: 100%;
+  background-position:center center;
+  background-size:cover;
+}
+
+.FAG_p {
+  color:#fff;
+  background-color:rgba(0, 0, 0, 0.91);
+  opacity:0;
+  transition:all .2s ease;
+  overflow: hidden;
+
+  position: absolute;
+  width: 32%;
+  max-width: 380px;
+  max-height: 380px;
+
+}
+.FAG_item:hover .FAG_p,
+.FAG_item_th:hover .FAG_p {
+  opacity:1;
+}
+</style>
