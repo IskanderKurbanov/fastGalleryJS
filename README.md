@@ -1,5 +1,5 @@
-# fastGalleryjs
-- beta v0.0.1
+# fastGalleryjs(~dataPreviewjs)
+- beta v0.0.2
 
 simple test library for yourself
 
