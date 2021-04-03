@@ -1,8 +1,8 @@
 /*
 `<article class="FAG_item">
-	<a href="${el.src}" class="FAG_link">
-		<aside style="background:url(${el.src});" class="FAG_aside">
-			<!--<img src="${el.src}" class="FAG_img">-->
+	<a href="${el.img}" class="FAG_link">
+		<aside style="background:url(${el.img});" class="FAG_aside">
+			<!--<img img="${el.img}" class="FAG_img">-->
 			<p>${el.text}</p>
 		</aside>
 	</a>
@@ -19,10 +19,8 @@ class Fag {
 		//options:{tag, headlines, path, data}
 
 		this.headlines = options.headlines // for gallery's headlines
-		this.path = options.path // for css and img files where library is located
 
-		if(this.path) document.write(`<link rel='stylesheet' href='${this.path}files/FAG_style.css' type='text/css'>`);
-		else document.write(`<link rel='stylesheet' href='FAG_style.css' type='text/css'>`);
+		//document.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/IskanderKurbanov/fastGalleryJS/files/FAG_style.css">');
 
 		if(options.data) {
 			this.data = options.data  // for json data
@@ -44,13 +42,16 @@ class Fag {
 		let f = this.data.map((el,index)=>{
 
 
-			let img, descTag, aside, item
+			let img, descTag, mobDescTag, aside, item
 
-			el.src?img=el.src:this.path?img=`${this.path}files/file.svg`:img="files/file.svg"
-			el.text?descTag=`<${descriptionTag}>${el.text}</${descriptionTag}>`:" "
-			aside = `<aside style="background-image:url(${img})">${descTag}</aside>`
+			if(el.img) img=el.img
 
-			el.link?item=`<article><a href="${el.link}">${aside}</a></article>`:item=`<article>${aside}</article>`
+			el.text ? descTag=`<${descriptionTag}>${el.text}</${descriptionTag}>` : descTag=""
+			el.mobileText ? mobDescTag=`<span class="FAG_mobileP">${el.mobileText}</span>`: mobDescTag=""
+
+			aside = `<aside style="background-image:url(${img})">${descTag}${mobDescTag}</aside>`
+
+			el.link?item = `<article><a href="${el.link}">${aside}</a></article>` : item=`<article>${aside}</article>`
 
 			if(!((index)%3!=0)) item = '<div class="FAG_row">' + item
 			if(!((index+1)%3!=0) || this.data.length-1 == index) item = item + '</div>'
@@ -58,15 +59,11 @@ class Fag {
 			console.log(item)
 
 			if(this.headlines){
-				if(el.visible && this.headlines.indexOf(el.title) != -1){
+				if(this.headlines.indexOf(el.title) != -1){
 					return item
 				}
 			}
-			else {
-				if(el.visible){
-					return item
-				}
-			}
+			else {return item}
 		})
 		
 		if(this.headlines) {

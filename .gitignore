@@ -1,3 +1,5 @@
 /#source/
 *.scss
 *.config
+dev-tests/index.html
+index.html

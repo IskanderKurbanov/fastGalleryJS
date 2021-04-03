@@ -51,9 +51,8 @@
 .FAG_item {
   margin-right: 2%;
 }
-.FAG_item_th{
-  margin:0px;
-}
+
+.FAG_item_th,
 .FAG_item:last-child,
 .FAG_item_th:last-child {
   margin:0px;
@@ -69,21 +68,44 @@
   background-size:cover;
 }
 
-.FAG_p {
-  color:#fff;
-  background-color:rgba(0, 0, 0, 0.91);
-  opacity:0;
-  transition:all .2s ease;
-  overflow: hidden;
-  padding:1%;
 
-  position: absolute;
-  width: 32%;
-  max-width: 380px;
-  max-height: 380px;
 
+@media (min-width: 1200px) {
+  .FAG_mobileP {
+    display: none;
+  }
+
+  .FAG_p {
+    color:#fff;
+    background-color:rgba(0, 0, 0, 0.91);
+    opacity:0;
+    transition:all .2s ease;
+    overflow: hidden;
+    padding:4px;
+
+    position: absolute;
+    max-width: 32%;
+    max-width: 376px;
+    //max-height: 350px;
+  }
+
+  .FAG_item:hover .FAG_p,
+  .FAG_item_th:hover .FAG_p {
+    opacity:1;
+  }
 }
-.FAG_item:hover .FAG_p,
-.FAG_item_th:hover .FAG_p {
-  opacity:1;
+
+@media (max-width: 1200px) {
+  .FAG_mobileP {
+    display: block;
+    color:#fff;
+    background-color:rgba(0, 0, 0, 0.91);
+    overflow: hidden;
+    height: 25px;
+    position: absolute;
+  }
+
+  .FAG_p {
+    display: none;
+  }
 }

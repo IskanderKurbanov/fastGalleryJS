@@ -1,5 +1,5 @@
 # fastGalleryjs(~dataPreviewjs)
-- beta v0.0.2
+- beta v0.0.3
 
 simple test library for yourself
 
@@ -33,5 +33,15 @@ Quickstart:
 	})
 </script>
 ```
+
+default data:
+
+	{
+		title: '',
+		text: '',
+		mobileText: '',
+		img: '',
+		link: '',
+	}
 
 
