@@ -9,7 +9,6 @@
 </article>`
 */
 
-
 const tagCss = 'max-width: 1200px;margin:30px auto;'
 const descriptionTag = 'p'
 
@@ -18,22 +17,44 @@ class Fag {
 	constructor(options) {
 		//options:{tag, headlines, path, data}
 
-		this.headlines = options.headlines // for gallery's headlines
 
-		//document.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/IskanderKurbanov/fastGalleryJS/files/FAG_style.css">');
+		this.headlines = options.headlines // for gallery's headlines
 
 		if(options.data) {
 			this.data = options.data  // for json data
-		} 
+		}
 		else console.log('not data')
+
+		if(options.defaultKey){
+			this.data.forEach(el=>{	
+				if(options.defaultKey.title) {
+					Object.defineProperty(el, 'title',  Object.getOwnPropertyDescriptor(el, options.defaultKey.title));
+					delete el[options.defaultKey.title];
+				}
+				if(options.defaultKey.text) {
+					Object.defineProperty(el, 'text',  Object.getOwnPropertyDescriptor(el, options.defaultKey.text));
+					delete el[options.defaultKey.text];
+				}
+				if(options.defaultKey.mobileText) {
+					Object.defineProperty(el, 'mobileText',  Object.getOwnPropertyDescriptor(el, options.defaultKey.mobileText));
+					delete el[options.defaultKey.mobileText];
+				}
+				if(options.defaultKey.img) {
+					Object.defineProperty(el, 'img',  Object.getOwnPropertyDescriptor(el, options.defaultKey.img));
+					delete el[options.defaultKey.img];
+				}
+				if(options.defaultKey.link) {
+					Object.defineProperty(el, 'link',  Object.getOwnPropertyDescriptor(el, options.defaultKey.link));
+					delete el[options.defaultKey.link];
+				}		
+			})
+		}
 
 		if(options.tag){
 			this.tag = document.querySelector(options.tag) // html tag where gallery is located
 			this.tag.style.cssText = tagCss
 			this.renderGallery()
 		}
-
-		//this.tag.style.height = (1200/3)*Math.ceil(this.data.length/3) + "px"
 	}
 
 
@@ -46,8 +67,8 @@ class Fag {
 
 			if(el.img) img=el.img
 
-			el.text ? descTag=`<${descriptionTag}>${el.text}</${descriptionTag}>` : descTag=""
-			el.mobileText ? mobDescTag=`<span class="FAG_mobileP">${el.mobileText}</span>`: mobDescTag=""
+			el.text ? descTag=`<${descriptionTag}>${el.text}</${descriptionTag}>` : descTag=`<${descriptionTag}> ${index+1} </${descriptionTag}>`
+			el.mobileText ? mobDescTag=`<span class="FAG_mobileP">${el.mobileText}</span>`: mobDescTag=`<span class="FAG_mobileP"></span>`
 
 			aside = `<aside style="background-image:url(${img})">${descTag}${mobDescTag}</aside>`
 
@@ -55,8 +76,6 @@ class Fag {
 
 			if(!((index)%3!=0)) item = '<div class="FAG_row">' + item
 			if(!((index+1)%3!=0) || this.data.length-1 == index) item = item + '</div>'
-
-			console.log(item)
 
 			if(this.headlines){
 				if(this.headlines.indexOf(el.title) != -1){

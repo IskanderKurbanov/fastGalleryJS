@@ -1,5 +1,5 @@
 # fastGalleryjs(~dataPreviewjs)
-- beta v0.0.3
+- beta v0.0.35
 
 simple test library for yourself
 
@@ -61,4 +61,19 @@ default data:
 		link: '',
 	}
 
+if your api data not as default data, you can change they:
+```javascript
+
+	new Fag({
+		tag: "#fg",
+		data: data,
+		defaultKey: {
+			// default key: your json key
+			title: 'name',
+			text: 'description',
+			img: 'url',
+		}
+	},)
+
+```
 
