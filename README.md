@@ -3,7 +3,7 @@
 
 simple test library for yourself
 
-![alt text](https://github.com/IskanderKurbanov/fastGalleryJS/img/preview.png)
+![alt text](https://raw.githubusercontent.com/IskanderKurbanov/fastGalleryJS/main/img/preview.png)
 
 Quickstart:
 ```javascript
