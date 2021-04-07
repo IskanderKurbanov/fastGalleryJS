@@ -12,11 +12,14 @@
 const tagCss = 'max-width: 1200px;margin:30px auto;'
 const descriptionTag = 'p'
 
+
+
 class Fag {
 
 	constructor(options) {
 		//options:{tag, headlines, path, data}
 
+		this.width = document.body.clientWidth
 
 		this.headlines = options.headlines // for gallery's headlines
 
@@ -53,12 +56,49 @@ class Fag {
 		if(options.tag){
 			this.tag = document.querySelector(options.tag) // html tag where gallery is located
 			this.tag.style.cssText = tagCss
-			this.renderGallery()
+			this.renderGallery(this.width)
 		}
+
+		document.querySelector('.FAG_tools').querySelectorAll('aside').forEach(el=>{
+			el.addEventListener("click", ()=>this.postRender(el.getAttribute('data')))
+			el.addEventListener("touchend", ()=>this.postRender(el.getAttribute('data')))
+		})
 	}
 
 
-	renderGallery() {
+	postRender(format){
+		let objs, objsRows
+		(format=='_list')? objsRows = this.tag.querySelectorAll(".FAG_row"): objsRows = this.tag.querySelectorAll(".FAG_row_list")
+		objs = this.tag.querySelectorAll("article")
+
+		if(format!='_list'){
+			objs.forEach((obj, index)=>{
+				((index+1)%3!=0)?obj.className = "FAG_item":obj.className = "FAG_item_th"
+				
+				obj.querySelector("a")?obj.querySelector("a").className = 'FAG_link':''
+				obj.querySelector("aside").className = 'FAG_aside'
+				obj.querySelector(descriptionTag).className = 'FAG_p'
+			})
+		} else {
+			objs.forEach((obj, index)=>{
+				((index+1)%3!=0)?obj.className = "FAG_item"+format:obj.className = "FAG_item_th"+format
+				
+				obj.querySelector("a")?obj.querySelector("a").className = 'FAG_link':''
+				obj.querySelector("aside").className = 'FAG_aside'+format
+				obj.querySelector(descriptionTag).className = 'FAG_p'
+			})
+		}
+		objsRows.forEach((obj)=>{
+			obj.className="FAG_row"+format
+		})
+		document.querySelector('.FAG_tools').querySelectorAll('aside').forEach(el=>{
+			(el.getAttribute('data') == format)? el.className='FAG_active':el.className=''
+		})
+	}
+
+
+	renderGallery(width) {
+		let format = '_list'
 
 		let f = this.data.map((el,index)=>{
 
@@ -84,6 +124,8 @@ class Fag {
 			}
 			else {return item}
 		})
+
+
 		
 		if(this.headlines) {
 			let m = this.headlines.map((el, index)=>{return `<p>${el}</p>`})
@@ -92,15 +134,8 @@ class Fag {
 			let navigation = this.tag.querySelector("nav")
 			navigation.querySelectorAll("p").forEach(el=>el.className = 'FAG_nav_p')
 		}
-		else this.tag.innerHTML = f.join('')
+		else this.tag.innerHTML = `<div class="FAG_tools"><aside data="">row</aside><aside data="${format}">list</aside></div>` + f.join('')
 
-		let objs = this.tag.querySelectorAll("article")
-		objs.forEach((obj, index)=>{
-			if((index+1)%3!=0) obj.className = "FAG_item"
-			else obj.className = "FAG_item_th"
-			obj.querySelector("a")?obj.querySelector("a").className = 'FAG_link':''
-			obj.querySelector("aside").className = 'FAG_aside'
-			obj.querySelector(descriptionTag).className = 'FAG_p'
-		}) 
+		width<=1000?this.postRender(format):this.postRender('')
 	}
 }

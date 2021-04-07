@@ -4,6 +4,7 @@
 }
 
 
+.FAG_tools,
 .FAG_nav,
 .FAG_row,
 .FAG_item,
@@ -31,6 +32,7 @@
 	text-decoration: none;
 }
 
+.FAG_tools,
 .FAG_row {
   width: 100%;
   display: flex;
@@ -47,6 +49,9 @@
   vertical-align: top;
 }
 
+.FAG_tools {margin: 15px 0px;border-bottom: 1px solid var(--black)}
+.FAG_tools aside {margin:0px 15px;}
+.FAG_tools aside:first-child {margin-left:auto;}
 
 .FAG_item_th,
 .FAG_item:last-child,
@@ -135,3 +140,26 @@
     display: none;
   }
 }
+
+
+
+.FAG_item_list {
+  margin: 20px 0px;
+}
+
+.FAG_aside_list {
+  margin: 0px auto;
+  width: 95%;
+  height: 100%;
+  background-position:center center;
+  background-size:cover;
+  display: flex;
+}
+
+.FAG_aside_list:after {
+  content: "";
+  padding-top: 100%;
+  display: block;
+}
+
+.FAG_active {border-bottom: 1px solid var(--black)}
