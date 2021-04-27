@@ -128,12 +128,11 @@
   
 
   .FAG_mobileP {
-    display: block;
     color:#fff;
     background-color:rgba(0, 0, 0, 0.91);
-    overflow: hidden;
     height: 25px;
-    position: absolute;
+    text-overflow: ellipsis;
+    white-space:  nowrap;
   }
 
   .FAG_p {
