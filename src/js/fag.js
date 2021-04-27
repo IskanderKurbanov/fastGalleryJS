@@ -64,10 +64,7 @@ class Fag {
 		tools.statistic?statistic = 'statistic: cooming soon':statistic = ''
 		const tools_block = document.createElement('div')
 		this.tag.append(tools_block)
-		tools_block.innerHTML = `<div class="FAG_tools">
-									${statistic}
-									${view}
-								</div>`
+		tools_block.innerHTML = `<div class="FAG_tools">${statistic} ${view}</div>`
 	}
 
 
