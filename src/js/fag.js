@@ -26,14 +26,17 @@ class Fag {
 		else console.log('not data')
 		if(options.tag){
 			this.tag = document.querySelector(options.tag) // html tag where gallery is located
-			if(this.tools) this.renderTools(this.tools)
+			if(this.tools){
+				this.renderTools(this.tools)
+				document.querySelector('.FAG_tools').querySelectorAll('aside').forEach(el=>{
+					el.addEventListener("click", ()=>this.postRender(el.getAttribute('data')))
+					//el.addEventListener("touchend", ()=>this.postRender(el.getAttribute('data')))
+				})
+			}
 			options.tagStyle==undefined||options.tagStyle==''?this.tag.style.cssText = tagCss : this.tag.style.cssText = options.tagStyle
 			this.renderGallery(this.width)
 		}
-		document.querySelector('.FAG_tools').querySelectorAll('aside').forEach(el=>{
-			el.addEventListener("click", ()=>this.postRender(el.getAttribute('data')))
-			//el.addEventListener("touchend", ()=>this.postRender(el.getAttribute('data')))
-		})
+		
 	}
 
 
