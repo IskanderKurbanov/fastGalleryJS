@@ -42,8 +42,9 @@ class Fag {
 
 	postRender(format){
 		let objsRows
+		let FAG_data = this.tag.querySelector('.FAG_data')
 		format=='_list'? objsRows = this.tag.querySelectorAll(".FAG_row"): objsRows = this.tag.querySelectorAll(".FAG_row_list")
-		this.tag.querySelectorAll("article").forEach((obj, index)=>{
+		FAG_data.querySelectorAll("article").forEach((obj, index)=>{
 			((index+1)%3!=0)?obj.className = "FAG_item"+format:obj.className = "FAG_item_th"+format
 			obj.querySelector("a")?obj.querySelector("a").className = 'FAG_link':''
 			obj.querySelector("aside").className = 'FAG_aside'+format
@@ -52,7 +53,7 @@ class Fag {
 		objsRows.forEach((obj)=> obj.className="FAG_row"+format )
 		if(this.tools){ 
 			document.querySelector('.FAG_tools').querySelectorAll('aside').forEach(el=>{
-				(el.getAttribute('data') == format)? el.className='FAG_active':el.className=''
+				//(el.getAttribute('data') == format)? el.className='FAG_active':el.className=''
 			})
 		}
 	}
@@ -60,8 +61,8 @@ class Fag {
 
 	renderTools(tools) {
 		let view, statistic
-		tools.view?view = '<aside data="">row</aside><aside data="_list">list</aside>':view = ''
-		tools.statistic?statistic = 'statistic: cooming soon':statistic = ''
+		tools.view?view = '<article class="FAG_viewTools"><aside data="" class="FAG_viewTools_row"></aside><aside data="_list" class="FAG_viewTools_list"></aside></article>':view = ''
+		tools.statistic?statistic = '<article class="FAG_statisticTools">statistic: cooming soon</article>':statistic = ''
 		const tools_block = document.createElement('div')
 		this.tag.append(tools_block)
 		tools_block.innerHTML = `<div class="FAG_tools">${statistic} ${view}</div>`
@@ -83,6 +84,7 @@ class Fag {
 	renderGallery(width) {
 		let format = '_list'
 		const data_block = document.createElement('div')
+		data_block.className = 'FAG_data'
 		this.tag.append(data_block)
 
 		let f = this.data.map((el,index)=>{
